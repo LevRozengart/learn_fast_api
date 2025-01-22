@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from enum import Enum
 
-
 app = FastAPI()
 
 @app.get("/")
@@ -30,9 +29,17 @@ item_in_stock = {
     2: False
 }
 
+
+item_orderable = {
+    2: "pre-order"
+}
+
 @app.get("/item/{item_id}/status")
-async def read_item(item_id: int, in_stock: bool | None = None):
-    item = {"item": items[item_id]}
-    if in_stock:
-        item.update({"in_stock": item_in_stock[item_id]})
+async def read_item(item_id: int, orderable: bool | None = None):
+    item = {
+            "item": items[item_id],
+            "in_stock": item_in_stock[item_id]
+            }
+    if orderable:
+        item.update({"orderable": item_orderable[item_id]})
     return item
