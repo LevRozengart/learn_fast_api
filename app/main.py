@@ -8,9 +8,9 @@ app = FastAPI()
 @app.get("/")
 def home_page():
     return {"message": "Hello!"}
-@app.get("/{username}/{password}")
+@app.get("/sign-in/")
 def authorization(username: str, password: str):
-    users = json_to_ld("users")
+    users = json_to_ld("users.json")
     for user in users:
         if user["username"] == username:
             if user["password"] == password:
