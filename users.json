@@ -1,0 +1,27 @@
+[
+  {
+    "username": "waywing",
+    "password": "256417",
+    "admin": true
+  },
+  {
+    "username": "roslik",
+    "password": "12345",
+    "admin": false
+  },
+  {
+    "username": "xapork",
+    "password": "122333",
+    "admin": false
+  },
+  {
+    "username": "bysov",
+    "password": "1212",
+    "admin": false
+  },
+  {
+    "username": "bbvl228337",
+    "password": "11111",
+    "admin": false
+  }
+]

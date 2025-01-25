@@ -1,4 +1,4 @@
-from utilities import json_to_ld
+from utilities import json_to_ld, ld_to_json, append_user
 from fastapi import FastAPI
 
 
@@ -18,3 +18,14 @@ def authorization(username: str, password: str):
             else:
                 return {"success": False, "reason": "incorrect password"}
         return {"success": False, "reason": "username is not found"}
+
+
+@app.get("/sign-up/")
+def registraton(username: str, password: str):
+    users = json_to_ld("users.json")
+    a = append_user(users, username, password)
+    if a:
+        ld_to_json(a, "users.json")
+        return {"success": True}
+    else:
+        return a
