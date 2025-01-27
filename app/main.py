@@ -1,6 +1,7 @@
 import json
 from fastapi import FastAPI, Query, HTTPException
 from typing import Annotated
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from enum import Enum
 
@@ -29,13 +30,15 @@ def sign_up(usermodel: User):
     try:
         with open(path) as f:
             lst_of_users = json.load(f)
-            lst_of_users.append(user_data)
         for user in lst_of_users:
             if user["username"] == username:
-                raise HTTPException(status_code=401, detail="уже есть человек с таким именем")
+                raise HTTPException(status_code=402, detail="уже есть человек с таким именем")
+        else:
+            lst_of_users.append(user_data)
         with open(path, "w") as f:
             json.dump(lst_of_users, f, indent=2)
         return {"status": "ok"}
     except HTTPException as e:
-        if e.status_code == 401:
-            return {"status": "error", "desciption": e.detail}
+        if e.status_code == 402:
+            return JSONResponse(status_code=402,
+                                content={"status": "error", "message": "пользователь с таким именем уже есть"})
