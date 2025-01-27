@@ -2,26 +2,43 @@
   {
     "username": "waywing",
     "password": "256417",
-    "admin": true
+    "admin": true,
+    "gender": "male"
   },
   {
     "username": "roslik",
     "password": "12345",
-    "admin": false
+    "admin": false,
+    "gender": "male"
   },
   {
     "username": "xapork",
     "password": "122333",
-    "admin": false
+    "admin": false,
+    "gender": "female"
   },
   {
     "username": "bysov",
     "password": "1212",
-    "admin": false
+    "admin": false,
+    "gender": "male"
   },
   {
     "username": "bbvl228337",
     "password": "11111",
-    "admin": false
+    "admin": false,
+    "gender": "male"
+  },
+  {
+    "username": "xodya",
+    "password": "4532",
+    "admin": false,
+    "gender": "male"
+  },
+  {
+    "username": "olux",
+    "password": "676767",
+    "admin": false,
+    "gender": "male"
   }
 ]
