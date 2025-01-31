@@ -14,13 +14,14 @@ class SBook(BaseModel):
 def add_book(bookmodel: SBook):
     with open("book.json") as f:
         lst_of_books: list = json.load(f)
-    lst_of_books.append({"id": len(lst_of_books) + 1,
+    book_id = max([book["id"] for book in lst_of_books]) + 1
+    lst_of_books.append({"id": book_id,
                          "title": bookmodel.title,
                          "author": bookmodel.author,
                          "year": bookmodel.year})
     with open("book.json", "w") as f:
         json.dump(lst_of_books, f, indent=2)
-    return {"id": len(lst_of_books),
+    return {"id": book_id,
             "title": bookmodel.title,
             "author": bookmodel.author,
             "year": bookmodel.year}
