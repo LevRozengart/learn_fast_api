@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Query
 from typing import Annotated
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import json
 from json import JSONDecodeError
 
@@ -69,3 +69,23 @@ def get_movie_by_id(movie_id: int):
         if movie["id"] == movie_id:
             return movie
     return {"error": "movie with this id is not found"}
+
+
+@app.delete("/movies/{movie_id}")
+def delete_movies_by_id(movie_id: int):
+    try:
+        with open("movies.json") as f:
+            lst_of_movies = json.load(f)
+    except Exception as e:
+        return {"status": "error"}
+
+    new_lst = []
+    returned_status = {}
+    for movie in lst_of_movies:
+        if movie["id"] == movie_id:
+            returned_status = {"message": f"Movie with ID {movie_id} had been deleted"}
+        else:
+            new_lst.append(movie)
+    if not returned_status:
+        returned_status = {"error": f"Not movie with {movie_id}"}
+    return returned_status
