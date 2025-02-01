@@ -88,4 +88,6 @@ def delete_movies_by_id(movie_id: int):
             new_lst.append(movie)
     if not returned_status:
         returned_status = {"error": f"Not movie with {movie_id}"}
+    with open("movies.json", "w") as f:
+        json.dump(new_lst, f, indent=2)
     return returned_status

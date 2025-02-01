@@ -10,11 +10,5 @@
     "genre": "test_genre",
     "year": 2011,
     "id": 2
-  },
-  {
-    "title": "test_title",
-    "genre": "test_genre",
-    "year": 2011,
-    "id": 3
   }
 ]
